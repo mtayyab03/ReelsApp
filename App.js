@@ -1,20 +1,44 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect } from "react";
+import {
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+  View,
+  Text,
+  ImageBackground,
+  FlatList,
+} from "react-native";
+
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+
+//screens
+
+import ReelCaption from "./app/screens/ReelCaption";
+import ReelRecordPractice from "./app/screens/ReelRecordPractice";
+import Reels from "./app/screens/Reels";
+
+//colors
+import Colors from "./app/config/Colors";
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{ headerMode: "false" }}
+        initialRouteName="ReelRecordPractice"
+      >
+        <Stack.Screen name="ReelCaption" component={ReelCaption} />
+        <Stack.Screen name="Reels" component={Reels} />
+        <Stack.Screen
+          name="ReelRecordPractice"
+          component={ReelRecordPractice}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const styles = StyleSheet.create({});
